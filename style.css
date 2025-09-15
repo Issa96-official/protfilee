@@ -4,14 +4,22 @@
   box-sizing: border-box;
 }
 
+html {
+  background: #1a202c !important;
+  background-color: #1a202c !important;
+  min-height: 100vh;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: #e2e8f0;
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
+  background-color: #1a202c !important;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  background-attachment: scroll; /* Bättre för mobil */
 }
 
 /* Förbättrad elegant bakgrundsanimation */
@@ -23,6 +31,7 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
+    #1a202c,
     radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 60% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
@@ -660,5 +669,45 @@ main {
   75% {
     transform: translateY(20px) translateX(15px) scale(1.02) rotate(0.5deg);
     opacity: 0.7;
+  }
+}
+
+/* Mobil-specifika fixar för bakgrund */
+@media screen and (max-width: 768px) {
+  html {
+    background: #1a202c !important;
+    background-color: #1a202c !important;
+  }
+  
+  body {
+    background: #1a202c !important;
+    background-image: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
+    background-color: #1a202c !important;
+    background-attachment: scroll !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    min-height: 100vh !important;
+  }
+  
+  /* Förstärk bakgrundselementen på mobil */
+  body::before {
+    background: #1a202c !important;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%) !important;
+  }
+  
+  body::after {
+    background: #1a202c !important;
+  }
+  
+  /* Anpassa header för mobil */
+  header {
+    background-color: rgba(26, 32, 44, 0.9) !important;
+  }
+  
+  /* Säkerställ att main har rätt bakgrund */
+  main {
+    background: transparent !important;
   }
 }
