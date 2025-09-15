@@ -944,3 +944,68 @@ main {
   25% { transform: translateX(2px); }
   75% { transform: translateX(-2px); }
 }
+
+/* اهتزاز النص المتحرك */
+.animated-text {
+  animation: textShake 3s ease-in-out infinite;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* تأثير hover للنص على سطح المكتب */
+.animated-text:hover {
+  animation: intenseLShake 0.5s ease-in-out infinite;
+  color: #667eea;
+  text-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+  cursor: pointer;
+}
+
+@keyframes intenseLShake {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(-2px) translateY(2px); }
+  50% { transform: translateX(2px) translateY(-2px); }
+  75% { transform: translateX(-2px) translateY(-2px); }
+}
+
+@keyframes textShake {
+  0%, 100% { 
+    transform: translateX(0) translateY(0); 
+    text-shadow: 0 0 15px rgba(255,255,255,0.4);
+  }
+  10% { 
+    transform: translateX(-3px) translateY(2px); 
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+  }
+  20% { 
+    transform: translateX(3px) translateY(-2px); 
+    text-shadow: 0 0 25px rgba(255,255,255,0.5);
+  }
+  30% { 
+    transform: translateX(-2px) translateY(3px); 
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+  }
+  40% { 
+    transform: translateX(2px) translateY(-3px); 
+    text-shadow: 0 0 15px rgba(255,255,255,0.4);
+  }
+  50% { 
+    transform: translateX(0) translateY(0); 
+    text-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+  }
+  60% { 
+    transform: translateX(-2px) translateY(2px); 
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+  }
+  70% { 
+    transform: translateX(2px) translateY(-2px); 
+    text-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
+  }
+  80% { 
+    transform: translateX(-3px) translateY(3px); 
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+  }
+  90% { 
+    transform: translateX(3px) translateY(-2px); 
+    text-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+  }
+}

@@ -18,6 +18,55 @@
       color: #e2e8f0 !important;
       min-height: 100vh !important;
     }
+    
+    /* اهتزاز النص - مضمون العمل */
+    @keyframes textShake {
+      0%, 100% { 
+        transform: translateX(0) translateY(0); 
+        text-shadow: 0 0 15px rgba(255,255,255,0.4);
+      }
+      10% { 
+        transform: translateX(-3px) translateY(2px); 
+        text-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+      }
+      20% { 
+        transform: translateX(3px) translateY(-2px); 
+        text-shadow: 0 0 25px rgba(255,255,255,0.5);
+      }
+      30% { 
+        transform: translateX(-2px) translateY(3px); 
+        text-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+      }
+      40% { 
+        transform: translateX(2px) translateY(-3px); 
+        text-shadow: 0 0 15px rgba(255,255,255,0.4);
+      }
+      50% { 
+        transform: translateX(0) translateY(0); 
+        text-shadow: 0 0 30px rgba(102, 126, 234, 0.8);
+      }
+      60% { 
+        transform: translateX(-2px) translateY(2px); 
+        text-shadow: 0 0 20px rgba(255,255,255,0.5);
+      }
+      70% { 
+        transform: translateX(2px) translateY(-2px); 
+        text-shadow: 0 0 25px rgba(102, 126, 234, 0.6);
+      }
+      80% { 
+        transform: translateX(-3px) translateY(3px); 
+        text-shadow: 0 0 20px rgba(255,255,255,0.4);
+      }
+      90% { 
+        transform: translateX(3px) translateY(-2px); 
+        text-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+      }
+    }
+    
+    .animated-text {
+      animation: textShake 3s ease-in-out infinite !important;
+      display: inline-block !important;
+    }
   </style>
 </head>
 <body>
@@ -51,7 +100,7 @@
       </div>
     </div>
     <div class="links-container">
-      <h2>تابعني على وسائل التواصل الاجتماعي</h2>
+      <h2 class="animated-text" style="animation: textShake 3s ease-in-out infinite !important;">تابعني على وسائل التواصل الاجتماعي</h2>
       <div>
         <a href="https://www.instagram.com/issa96_official/" class="link-button">
           <span class="button-icon">📷</span> Instagram
@@ -141,6 +190,31 @@
         
         profileImage.addEventListener('touchend', function() {
           this.style.transform = 'rotate(0deg) scale(1)';
+        });
+      }
+      
+      // تأثير اللمس على النص المتحرك
+      const animatedText = document.querySelector('.animated-text');
+      if (animatedText) {
+        animatedText.addEventListener('touchstart', function() {
+          if (navigator.vibrate) {
+            navigator.vibrate([30, 20, 30]);
+          }
+          this.style.animation = 'intenseLShake 0.5s ease-in-out infinite';
+          this.style.color = '#667eea';
+          this.style.textShadow = '0 0 30px rgba(102, 126, 234, 0.8)';
+        });
+        
+        animatedText.addEventListener('touchend', function() {
+          this.style.animation = 'textShake 3s ease-in-out infinite';
+          this.style.color = '';
+          this.style.textShadow = '';
+        });
+        
+        animatedText.addEventListener('touchcancel', function() {
+          this.style.animation = 'textShake 3s ease-in-out infinite';
+          this.style.color = '';
+          this.style.textShadow = '';
         });
       }
     });
