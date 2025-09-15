@@ -136,24 +136,30 @@
           
           // Visuell feedback
           this.style.transform = 'translateY(-2px) scale(0.95)';
-          this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
-          this.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.6)';
+          this.style.background = 'rgba(102, 126, 234, 0.3)';
+          this.style.backdropFilter = 'blur(25px)';
+          this.style.webkitBackdropFilter = 'blur(25px)';
+          this.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4)';
           this.style.transition = 'all 0.1s ease';
         });
         
         // Touch end - när man släpper
         button.addEventListener('touchend', function(e) {
           this.style.transform = 'translateY(0) scale(1)';
-          this.style.background = 'rgba(45, 55, 72, 0.9)';
-          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+          this.style.background = 'rgba(255, 255, 255, 0.1)';
+          this.style.backdropFilter = 'blur(15px)';
+          this.style.webkitBackdropFilter = 'blur(15px)';
+          this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
           this.style.transition = 'all 0.3s ease';
         });
         
         // Touch cancel - om touch avbryts
         button.addEventListener('touchcancel', function(e) {
           this.style.transform = 'translateY(0) scale(1)';
-          this.style.background = 'rgba(45, 55, 72, 0.9)';
-          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+          this.style.background = 'rgba(255, 255, 255, 0.1)';
+          this.style.backdropFilter = 'blur(15px)';
+          this.style.webkitBackdropFilter = 'blur(15px)';
+          this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
           this.style.transition = 'all 0.3s ease';
         });
         
