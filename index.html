@@ -21,6 +21,15 @@
   </style>
 </head>
 <body>
+  <!-- Flytande ikoner -->
+  <div class="floating-icons">
+    <div class="floating-icon">📱</div>
+    <div class="floating-icon">🎬</div>
+    <div class="floating-icon">📸</div>
+    <div class="floating-icon">✨</div>
+    <div class="floating-icon">🚀</div>
+  </div>
+  
   <div class="shine-overlay"></div>
   <div class="background-particles">
     <div class="particle"></div>
@@ -44,13 +53,97 @@
     <div class="links-container">
       <h2>تابعني على وسائل التواصل الاجتماعي</h2>
       <div>
-        <a href="https://www.instagram.com/issa96_official/" class="link-button">Instagram</a>
-        <a href="https://www.facebook.com/issa96.official" class="link-button">Facebook</a>
-        <a href="https://www.tiktok.com/@issa96_official8?_t=ZN-8zkYYEFl2mZ&_r=1" class="link-button">TikTok</a>
-        <a href="https://twitter.com/issa96_official" class="link-button">Twitter</a>
-        <a href="https://www.youtube.com/@issa96_official" class="link-button">YouTube</a>
+        <a href="https://www.instagram.com/issa96_official/" class="link-button">
+          <span class="button-icon">📷</span> Instagram
+        </a>
+        <a href="https://www.facebook.com/issa96.official" class="link-button">
+          <span class="button-icon">👥</span> Facebook
+        </a>
+        <a href="https://www.tiktok.com/@issa96_official8?_t=ZN-8zkYYEFl2mZ&_r=1" class="link-button">
+          <span class="button-icon">🎵</span> TikTok
+        </a>
+        <a href="https://twitter.com/issa96_official" class="link-button">
+          <span class="button-icon">🐦</span> Twitter
+        </a>
+        <a href="https://www.youtube.com/@issa96_official" class="link-button">
+          <span class="button-icon">🎥</span> YouTube
+        </a>
       </div>
     </div>
   </main>
+  
+  <script>
+    // Touch-interaktioner med vibration
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.link-button');
+      
+      buttons.forEach(button => {
+        // Touch start - när man börjar trycka
+        button.addEventListener('touchstart', function(e) {
+          // Vibration om det stöds (50ms kort vibration)
+          if (navigator.vibrate) {
+            navigator.vibrate(50);
+          }
+          
+          // Visuell feedback
+          this.style.transform = 'translateY(-2px) scale(0.95)';
+          this.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+          this.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.6)';
+          this.style.transition = 'all 0.1s ease';
+        });
+        
+        // Touch end - när man släpper
+        button.addEventListener('touchend', function(e) {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.background = 'rgba(45, 55, 72, 0.9)';
+          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+          this.style.transition = 'all 0.3s ease';
+        });
+        
+        // Touch cancel - om touch avbryts
+        button.addEventListener('touchcancel', function(e) {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.background = 'rgba(45, 55, 72, 0.9)';
+          this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+          this.style.transition = 'all 0.3s ease';
+        });
+        
+        // Extra effekt för längre tryck
+        let longPressTimer;
+        button.addEventListener('touchstart', function(e) {
+          longPressTimer = setTimeout(() => {
+            if (navigator.vibrate) {
+              navigator.vibrate([100, 50, 100]); // Längre vibrationsmönster
+            }
+            this.style.boxShadow = '0 12px 35px rgba(102, 126, 234, 0.8)';
+          }, 500); // Efter 0.5 sekunder
+        });
+        
+        button.addEventListener('touchend', function(e) {
+          clearTimeout(longPressTimer);
+        });
+        
+        button.addEventListener('touchcancel', function(e) {
+          clearTimeout(longPressTimer);
+        });
+      });
+      
+      // Extra animation för profilbild vid touch
+      const profileImage = document.querySelector('.profile-image');
+      if (profileImage) {
+        profileImage.addEventListener('touchstart', function() {
+          if (navigator.vibrate) {
+            navigator.vibrate(30);
+          }
+          this.style.transform = 'rotate(10deg) scale(1.1)';
+          this.style.transition = 'all 0.3s ease';
+        });
+        
+        profileImage.addEventListener('touchend', function() {
+          this.style.transform = 'rotate(0deg) scale(1)';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
